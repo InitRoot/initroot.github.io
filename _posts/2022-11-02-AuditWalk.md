@@ -42,9 +42,11 @@ We save our modification which results in a “patched” binary `Audit.Admin.UI
 <br/>
 We could simply copy the application files to a user-writeable directory and replace the referenced `Audit.Admin.UI.dl`l` file with our patched one. For all its good intentions, Strong-named assemblies might have helped here.
 
+![Modification Works!](/assets/1666898948618.png){: style="float: left"}
+
 We opened the `AdminPortal.exe` application and, Magnifique!, our patch worked we can run the Admin application. We add ourselves to the application as local users and do some other fun stuff.
 
-![Modification Works!](/assets/1666898948618.png)
+
 
 ### User Account Impersonation
 Patching the application library files can also be used to impersonate other users, specifically useful in our `WorkingPapers.exe` type applications. Our impersonation can be done as the application utilizes SSO (Windows Authentication), which in the application's logic extracts the username of the currently authenticated domain account and then utilizes the value to validate authentication and authorization for the application from the backend database, a flawed premise when manipulated. 
@@ -57,9 +59,11 @@ We aim to inject a static username, which could be any application user's domain
 
 ![Username Modification](/assets/1666901159551.png)
 
+![Impersonation Works](/assets/1666901525107.png){: style="float: right"}
+
 We rerun our `WorkingPapers.exe` and the application loads successfully impersonating our `DOMAIN\EE1111` user and we can continue to use the application on their behalf. 
 
-![Impersonation Works](/assets/1666901525107.png)
+
 
 ### Hardcoding Encryption
 In both of the above instances, we've had the privilege of abusing the configuration or connection file which stores encrypted credentials to the backend SQL database. All of this would be better if we could have direct database access. Considering the credentials are encrypted, we start hunting the application flow for areas resolved around decryption. The below image outlines an example of the configuration or connection file.
