@@ -59,12 +59,12 @@ We aim to inject a static username, which could be any application user's domain
 
 ![Username Modification](/assets/1666901159551.png)
 
-![Impersonation Works](/assets/1666901525107.png){: style="float: left"}
+
 We rerun our `WorkingPapers.exe` and the application loads successfully impersonating our `DOMAIN\EE1111` user and we can continue to use the application on their behalf. 
 
+![Impersonation Works](/assets/1666901525107.png)
 
-<br/>
-<br/>
+
 ### Hardcoding Encryption
 In both of the above instances, we've had the privilege of abusing the configuration or connection file which stores encrypted credentials to the backend SQL database. All of this would be better if we could have direct database access. Considering the credentials are encrypted, we start hunting the application flow for areas resolved around decryption. The below image outlines an example of the configuration or connection file.
 
