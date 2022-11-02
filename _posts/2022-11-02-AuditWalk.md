@@ -9,7 +9,7 @@ tags:
   - Insecure Code
 ---
 
-I've recently had the pleasure to perform an engagement focusing on compromising a well-known audit solution. After some basic analysis of the solution and specifically the various thick clients, we identified that the customer implemented the thick clients with LDAP SSO. This was found to be insecurely implemented and we eventually end up with some user impersation attacks, reversing encrpytion and xxxx.
+I've recently had the pleasure to perform an engagement focusing on compromising a well-known audit solution. After some basic analysis of the solution and specifically the various thick clients, we identified that the customer implemented the thick clients with LDAP SSO. This was found to be insecurely implemented and we eventually end up with some user impersonation attacks, reversing encrpytion and bypassing logical access to the Admin application.
 
 <!--more-->
 
