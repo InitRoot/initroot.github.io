@@ -27,7 +27,7 @@ We immediately open the application in our favorite .net debugger. We start brow
 
 {% include note.html content="Keywords: Login, Authenticate, Administrator; Also search the code for the alert text within messageboxes and trace backward." %} 
 <br/>
-By tracing some of the DLL imports, we identify a crucial library file `Audit.Admin.UI.dll`, which contains most of the codebase of our  `AdminPortal.exe`. 
+By tracing some of the DLL imports, we identify a crucial library file `Audit.Admin.UI.dll` which contains most of the codebase of our  `AdminPortal.exe`. 
 Within the `Audit.Admin.UI` namespace, we identify a class called `UserProcessBase`, which performs an authorization check. In layman's term, if the current user's Windows authentication is authorized to access the application, the result of this authorization check is stored within a boolean value `true || false`. Keep in mind the application has been set up with SSO. 
 
 ![UserProcessBase Authorisation Check](/assets/1666894878329.png)
@@ -40,7 +40,7 @@ We save our modification which results in a “patched” binary `Audit.Admin.UI
 
 {% include note.html content="This does have the prerequisite of having a working configuration or connection file." %} 
 <br/>
-We could simply copy the application files to a user-writeable directory and replace the referenced `Audit.Admin.UI.dl`l` file with our patched one. For all its good intentions, Strong-named assemblies might have helped here.
+We could simply copy the application files to a user-writeable directory and replace the referenced `Audit.Admin.UI.dll` file with our patched one. For all its good intentions, Strong-named assemblies might have helped here.
 
 ![Modification Works!](/assets/1666898948618.png){: style="float: left"}
 
