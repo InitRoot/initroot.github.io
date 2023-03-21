@@ -1760,7 +1760,6 @@ We run our payload and successfully obtain a reverse shell. In the next write-up
 Our full ROP chain looks as follows, use dropdown to view.
 
 {::options parse_block_html="true" /}
-
 <details>
   <summary>Large Code Block</summary>
   Full ROP chain code is within the below codeblock.
