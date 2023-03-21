@@ -16,6 +16,14 @@ project_entries:
   - title: SourceMapper
     url: https://github.com/InitRoot/SourceMapping
     desc: Script that checks if files is accessible based on the source code, checkout the DEV branch that supports some MVC frameworks.
+ 
+  - title: BurpJSLinkFinder
+    url: https://github.com/InitRoot/BurpJSLinkFinder
+    desc: Burp Extension for a passive scanning JS files for endpoint links. Outdated version in Burp App Store.
+
+  - title: Rugby Challenge 3, 4 and Rugby 2022 Editors
+    url: https://www.therugbyforum.com/forums/rugby-challenge-series.174/
+    desc: Editors for the RC franchise and recent Rugby 2022 games. Available on therugbyforum.
 
 
 footer_entries:
