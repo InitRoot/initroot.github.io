@@ -3,4 +3,5 @@ _site
 .jekyll-metadata
 .dstore
 .DS_Store
+robots.txt
 Gemfile.lock
