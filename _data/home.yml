@@ -11,11 +11,11 @@ navbar_entries:
 project_entries:
   - title: Wodat
     url: https://github.com/InitRoot/wodat
-    desc: Simple port of the popular Oracle Database Attack Tool (ODAT) (https://github.com/quentinhardy/odat) to C# .Net Framework. Credit to https://github.com/quentinhardy/odat as lots of the functionality are ported from his code.
+    desc: Simple port of the popular Oracle Database Attack Tool (ODAT) to C# .Net Framework. 
 
   - title: SourceMapper
     url: https://github.com/InitRoot/SourceMapping
-    desc: Simple script that checks if files is accessible based on the source code, checkout the DEV branch that supports some MVC frameworks.
+    desc: Script that checks if files is accessible based on the source code, checkout the DEV branch that supports some MVC frameworks.
 
 
 footer_entries:
