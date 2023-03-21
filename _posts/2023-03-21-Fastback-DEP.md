@@ -20,17 +20,17 @@ The write-up focuses purely on the DEP bypass, as we’ve already created an exp
 ## Table of contents
 - [Table of contents](#table-of-contents)
 - [Intro](#the-start)
-- [Preparing for ROP] (#ROP)
-- [Selecting Gadgets File] (#gadgets)
-- [Preparing the Stack] (#stack)
-- [Obtaining VirtualAlloc Address] (#valloca)
-- [Patching Return Address] (#retadd)
-- [Patching Arguments] (#parg)
-- [Executing VirtualAlloc] (#exvalloc)
-- [Shellcode Execution] (#shellexec)
+- [Preparing for ROP](#ROP)
+- [Selecting Gadgets File](#gadgets)
+- [Preparing the Stack](#stack)
+- [Obtaining VirtualAlloc Address](#valloca)
+- [Patching Return Address](#retadd)
+- [Patching Arguments](#parg)
+- [Executing VirtualAlloc](#exvalloc)
+- [Shellcode Execution](#shellexec)
 
 
-### Intro (#intro)
+### Intro(#intro)
 
 `VirtualAlloc` can be used to bypass DEP as it reserves, commit or changes the state of region of pages in the virtual address space of the calling process. We will be invoking the function, and applying the correct parameters. Note that the symbol name within `kernel32.dll` would be `VirtualAllocStub`.
 
@@ -107,7 +107,7 @@ CSNCDAV6.DLL
 SNFS.DLL
 ```
 
-### Preparing for ROP (#ROP)
+### Preparing for ROP(#ROP)
 
 We don’t have to do much to prepare for our ROP chain, we’ve already worked out the offsets in our previous endeavors as shown below.
 
