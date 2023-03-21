@@ -14,15 +14,13 @@ In this writeup, we continue building a DEP bypass for the Tivolti Fastback Serv
 The write-up focuses purely on the DEP bypass, as we’ve already created an exploit and will continue building on it.
 
 
-
 **WARNING: OSED EXERCISE SPOILERS BELOW.**
-
 
 
 <!--more-->
 
 ## Table of contents
-- [Intro](#the-start)
+- [Intro](#intro)
 - [Preparing for ROP](#ROP)
 - [Selecting Gadgets File](#gadgets)
 - [Preparing the Stack](#stack)
@@ -33,7 +31,7 @@ The write-up focuses purely on the DEP bypass, as we’ve already created an exp
 - [Shellcode Execution](#shellexec)
 
 
-### Intro(#intro)
+## Intro(#intro)
 
 `VirtualAlloc` can be used to bypass DEP as it reserves, commit or changes the state of region of pages in the virtual address space of the calling process. We will be invoking the function, and applying the correct parameters. Note that the symbol name within `kernel32.dll` would be `VirtualAllocStub`.
 
