@@ -31,7 +31,7 @@ The write-up focuses purely on the DEP bypass, as we’ve already created an exp
 - [Shellcode Execution](#shellexec)
 
 
-## Intro(#intro)
+## Intro <a name="intro"></a>
 
 `VirtualAlloc` can be used to bypass DEP as it reserves, commit or changes the state of region of pages in the virtual address space of the calling process. We will be invoking the function, and applying the correct parameters. Note that the symbol name within `kernel32.dll` would be `VirtualAllocStub`.
 
@@ -108,7 +108,7 @@ CSNCDAV6.DLL
 SNFS.DLL
 ```
 
-### Preparing for ROP(#ROP)
+## Preparing for ROP <a name="ROP"></a>
 
 We don’t have to do much to prepare for our ROP chain, we’ve already worked out the offsets in our previous endeavors as shown below.
 
@@ -160,7 +160,7 @@ We confirm that our everything loads correctly as shown below by running `dd esp
 
 We see that our `lpAddress` and `flAllocationType` parameters doesn’t load properly, however, we ignore it for now as we will be replacing them with the correct values. Based on our previous knowledge we know the bad characters are `0x00, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x20`. We have successfully prepared our exploit for the `VirtualAlloc` DEP bypass. 
 
-### Selecting Gadgets File (#gadgets)
+## Selecting Gadgets File <a name="gadgets"></a>
 
 We copy three files we would like to utilise to a folder.
 
@@ -192,7 +192,7 @@ Our output from the above will look like the below. I’ve rather using the scri
 
 ![Untitled](/assets/Untitled%202.png)
 
-### Preparing the Stack (#stack)
+## Preparing the Stack <a name="stack"></a>
 
 We need to find the stack address of our current dummy registers, this can be done by using the value in `ESP`. We can’t modify `ESP` as it will point to the next gadget, however, we can copy it to another register. The following ways can be used to obtain a copy of the `ESP` register. Important to ensure we are carried towards our next ROP chain values else execution will not continue.
 
@@ -263,7 +263,7 @@ SNFS!toupper+0x1d:
 
 We can see that our `EBX` and `ESP` registers point to the same value.
 
-### Obtaining VirtualAlloc Address (#valloca)
+## Obtaining VirtualAlloc Address <a name="valloca"></a>
 
 We need to obtain the location of our `VritualAlloc` from the IAT table. We first verify if this is imported using IDA from the imports table. Our process will be as follow:
 
@@ -654,7 +654,7 @@ We have successfully patched the address of `VirtualAlloc` at runtime. Let’s r
 3. ROP chain to fetch the `VirtualAlloc` address
 4. ROP chain to patch the `VirtualAlloc` address
 
-### Patching Return Address (#retadd)
+## Patching Return Address <a name="retadd"></a>
 
 Because during ROP chains we are modifying the return address, once we within our ROP chain, we returned into it, therefore we won’t have valid return address. We therefore need to patch it so that our shellcode is next. We need to shift execution to our `(0x46464646)) # Shellcode Return Address` location. We follow the same 3 step recipe as before.
 
@@ -847,7 +847,7 @@ va += pack("<L", (0x49494949)) # flAllocationType
 va += pack("<L", (0x51515151)) # flProtect
 ```
 
-### Patching Arguments (#parg)
+## Patching Arguments <a name="parg"></a>
 
 Now that we have our `VirtualAlloc` address stored, and our `shellcode` address, we need to start adding the arguments required by `VirtualAlloc` to disable DEP. Let’s recap our function prototype and requirements. 
 
@@ -1158,7 +1158,7 @@ We check that everything is working as shown below.
 00e9e304  00000040
 ```
 
-### Executing VirtualAlloc (#exvalloc)
+## Executing VirtualAlloc <a name="exvalloc"></a>
 
 With everything aligned and ready, the only challenge that remains is to invoke the API. We look for gadgets that allows us to overwrite ESP.
 
@@ -1426,7 +1426,7 @@ cs=001b  ss=0023  ds=0023  es=0023  fs=003b  gs=0000             efl=00000246
 0193e4b4 cc              int     3
 ```
 
-### Running Shellcode (#shellexec)
+## Running Shellcode <a name="shellexec"></a>
 
 Once completed, we replace our dummy shellcode with some actual shellcode that will execute a payload to obtain a reverse shell.
 
