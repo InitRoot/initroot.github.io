@@ -1,5 +1,5 @@
 ---
-title: 'WPM DEP High Level Methodology"
+title: "WPM DEP Bypass Methodology"
 excerpt_separator: "<!--more-->"
 categories:
   - Blog
@@ -9,6 +9,9 @@ tags:
   - Penetration testing
   - Insecure code
 ---
+
+A quick methodology for DEP WPM. 
+<!--more-->
 
 # 9. ROP with WriteProcessMemory
 
