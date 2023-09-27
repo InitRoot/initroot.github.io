@@ -211,7 +211,7 @@ typedef struct _IMAGE_EXPORT_DIRECTORY
 
 There exists a direct correspondence (*one to one relationship*) between the *AddressOfFunctions*, *AddressOfNames*, and *AddressOfNamesOrdinals* arrays. To obtain a symbol’s name, we initiate the process with the *AddressOfNames* array. Each name holds a distinct entry and corresponding index within the array. Once the target symbol's name is located at index *i* in the *AddressOfNames* array, we can utilize the identical index *i* in the *AddressOfNamesOrdinals* array for further operations. The below diagram (*EAT function VMA)* outlines the process and are obtained from the official OSED coursework.
 
-![Untitled](7%201%20Shellcode%20Guide%20880426d1648743bd8d8498304a125ea4/Untitled.png)
+**IMAGE REMOVED**
 
 The value retrieved from the *AddressOfNamesOrdinals a*rray at position *i* serves as an index within the *AddressOfFunctions* array. At this index, we locate the relative virtual memory address of the function. By adding the DLL's base address to this address, we obtain a fully functional *Virtual Memory Address* (VMA). In order to prioritize both the size and portability of our shellcode, we aim to enhance the efficiency of our symbol name search algorithm. To achieve this goal, we will employ a specific hashing function that converts a string into a four-byte hash value. This approach enables the reutilization of assembly instructions for any specified symbol name. The algorithm yields identical outcomes as *GetProcAddress* function and can be applied to any DLL. Once the *LoadLibraryA* symbol is resolved, it becomes possible to load various modules and locate the necessary functions for constructing custom shellcode, all without relying on *GetProcAddress*. 
 
